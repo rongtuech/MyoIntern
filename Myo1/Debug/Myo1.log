@@ -1,0 +1,21 @@
+﻿  main_myo.cpp
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesture.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesture.cpp(37): warning C4018: '<': signed/unsigned mismatch
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(25): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(150): warning C4018: '<': signed/unsigned mismatch
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(162): warning C4018: '<': signed/unsigned mismatch
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(22): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(101): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(102): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(103): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\testcontrol.cpp(90): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\example\myo\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  f:\example\myo\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+f:\example\myo\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  f:\example\myo\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+  Myo1.vcxproj -> C:\Users\Trung\documents\visual studio 2015\Projects\Myo1\Debug\Myo1.exe
+  Myo1.vcxproj -> C:\Users\Trung\documents\visual studio 2015\Projects\Myo1\Debug\Myo1.pdb (Partial PDB)
+          1 file(s) copied.
