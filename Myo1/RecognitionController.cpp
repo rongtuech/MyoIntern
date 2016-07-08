@@ -23,7 +23,7 @@ using namespace std;
 const float HIGHPASSFACTOR = 0.3;
 const float GESTUREDISTANCE = 0.2f;
 const int NUMSTEP = 30;
-const int THRESHOLDOFREALGESTURE = 80;
+const int THRESHOLDOFREALGESTURE = 45;
 const int NUMDATAFOREACHSTEP = 5;
 const int NUMDATABETWEENSTEPS = 3;
 

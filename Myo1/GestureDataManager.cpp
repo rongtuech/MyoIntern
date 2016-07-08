@@ -109,9 +109,6 @@ private:
 		if (openfile.is_open()) {
 			while (!openfile.eof())
 			{
-				if (index >= 5) {
-					break;
-				}
 				getline(openfile, line);
 				indexOfExamplars.push_back(stoi(line));
 				index++; // this line still be here for testing.

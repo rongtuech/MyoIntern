@@ -175,12 +175,12 @@ public:
 	float acc[3] = {};
 	
 	RecognitionController *recognitionController;
-	Mode mode = Mode::TRAINING;   
+	Mode mode = Mode::RECOGNIZE;   
 };  
 
-int main(int argc, char** argv)   
+int main(int argc, char** argv)     
 {
-	
+	  
 	// We catch any exceptions that might occur below -- see the catch statement for more details.
 	try {
 		
