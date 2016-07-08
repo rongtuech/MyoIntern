@@ -45,15 +45,6 @@ private:
 		else
 			return value3;
 	}
-/*
-	int getMinOf3Value(int value1, int value2, int value3) {
-		if (value1 <= value2 && value1 <= value3)
-			return value1;
-		else if (value2 <= value1 && value2 <= value3)
-			return value2;
-		else
-			return value3;
-	}*/
 
 	float calAbsDistance(Gesture examplar, Gesture currentAccl, int indexExamplar, int indexCurr) {
 		return sqrtf(powf(examplar.sequence_x[indexExamplar] - currentAccl.sequence_x[indexCurr], 2) 

@@ -8,7 +8,7 @@ using namespace std;
 class Gesture {
 public:
 	vector<int> sequence_x;
-	vector<int> sequence_y;
+	vector<int> sequence_y; 
 	vector<int> sequence_z;
 	
 	Gesture() {
@@ -32,7 +32,7 @@ public:
 		sequence_y.clear();
 		sequence_z.clear();
 	}
-
+	 
 	void print() {
 		for (int i = 0; i < sequence_x.size(); i++)
 			cout << sequence_x[i] << " " << sequence_y[i] << " " << sequence_z[i] << endl;

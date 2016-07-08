@@ -5,6 +5,7 @@ enum Mode {
 	TRAINING,
 	GETDATA,
 	TEST,
+	COLLECTDATA
 };
 #endif // !MODE_H
 
@@ -36,6 +37,7 @@ public:
 	RecognitionController(Mode mode) {
 		switch (mode) {
 		case Mode::TRAINING:
+		case Mode::COLLECTDATA:
 			examplarsData = new GestureDataManager(0);
 			break;
 		case Mode::RECOGNIZE:
@@ -57,6 +59,7 @@ public:
 	}
 
 	void processInitAccl(float accelX, float accelY, float accelZ) { 
+		filterHighPassFactor(accelX, accelY, accelZ);
 		if (isInSegment(accelX, accelY, accelZ)) {
 			processSegment(accelX, accelY, accelZ);
 		}
@@ -95,8 +98,7 @@ private:
 			return -16;
 	}
 
-
-	float calcGapCurrentAndPreviousAccl(float accelX, float accelY, float accelZ) {
+	void filterHighPassFactor(float &accelX, float &accelY, float &accelZ) {
 		static float lastX = 0, lastY = 0, lastZ = 0;
 		lastX = accelX*HIGHPASSFACTOR + lastX*(1.0 - HIGHPASSFACTOR);
 		lastY = accelY*HIGHPASSFACTOR + lastY*(1.0 - HIGHPASSFACTOR);
@@ -105,13 +107,15 @@ private:
 		accelX = accelX - lastX;
 		accelY = accelY - lastY;
 		accelZ = accelZ - lastZ;
+	}
+
+	float calcGapCurrentAndPreviousAccl(float accelX, float accelY, float accelZ) {
 		float result = sqrtf(powf(accelX - previousAccel[0], 2) + powf(accelY - previousAccel[1], 2) + powf(accelZ - previousAccel[2], 2));
 
 		previousAccel[0] = accelX;
 		previousAccel[1] = accelY;
 		previousAccel[2] = accelZ;
 
-		//cout << accelX << " " << accelY << " " << accelZ << endl;
 		return result;
 	}
 
@@ -129,16 +133,16 @@ private:
 	}
 
 	void resetData() {
+		indexForDataEachStep = 0;
+		isDataEachStepFull = false;
+		countToStep = 0;
+		isFinishSegment = false;
+		currentGesture.clearAll();
 		for (int i = 0; i < 3;i++)
 			sumAccInEachStep[i] = 0;
 		for (int i = 0; i < 5;i++)
 			for (int j = 0;j<3;j++)
 				dataInEachStep[i][j] = 0;
-		indexForDataEachStep = 0;
-		isDataEachStepFull = false;
-		countToStep = 0;
-		currentGesture.clearAll();
-		isFinishSegment = false;
 	}
 
 	void initDataAtStartGesture() {
@@ -162,7 +166,10 @@ private:
 			}
 			break;
 		case Mode::TEST:
-			// 
+			// TODO :: No collect data just pumd data to auto test and print result.
+			break;
+		case Mode::COLLECTDATA:
+			// TODO: add collectData -> raw group 
 			break;
 		}
 		resetData();
@@ -207,14 +214,13 @@ private:
 		int type = 0;
 		float min = getDTWScore(examplarsData->examplars[0]);
 		float dtwScore = 0;
+		int sizeOfTraining = examplarsData->examplars.size();
 
-		cout << "DTW value 0: " << min << endl;
-		for (int i = 1;i < 5;i++) {
+		for (int i = 1;i < sizeOfTraining;i++) {
 			dtwScore = getDTWScore(examplarsData->examplars[i]);
-			cout << "DTW value : "<<i<<" = " << dtwScore << endl;
 			if (min > dtwScore) {
 				min = dtwScore;
-				type = i;
+				type = examplarsData->indexOfExamplars[i];
 			}
 		}
 		cout << "Min value : " << min << endl;

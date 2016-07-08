@@ -170,15 +170,15 @@ public:
 	// These values are set by onOrientationData() and onPose() above.
 	int roll_w, pitch_w, yaw_w;
 	myo::Pose currentPose;
-  
+   
 	// These values are set by onAccelerationData() above.
 	float acc[3] = {};
 	
 	RecognitionController *recognitionController;
-	Mode mode = Mode::RECOGNIZE;   
+	Mode mode = Mode::TRAINING;   
 };  
 
-int main(int argc, char** argv)  
+int main(int argc, char** argv)   
 {
 	
 	// We catch any exceptions that might occur below -- see the catch statement for more details.
@@ -220,7 +220,7 @@ int main(int argc, char** argv)
 			// obtained from any events that have occurred. 
 			collector.print();
 		}
-	 
+	  
 		 
 		// If a standard exception occurred, we print out its message and exit.
 	}

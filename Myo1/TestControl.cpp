@@ -38,8 +38,7 @@ public:
 	}
 
 	void testAllCode() {
-		gestureData = new GestureDataManager();
-		gestureData->loadTestGestures();
+		gestureData = new GestureDataManager(2);
 
 		int lengthOfTest = gestureData->testGestures.size();
 		for (int i = 0;i < lengthOfTest; i++) {
@@ -71,11 +70,11 @@ private:
 		int type = 0;
 		int min = getDTWScore(gestureData->examplars[0], testGesture);
 		int dtwScore = 0;
-		for (int i = 1;i < 5;i++) {
+		for (int i = 1;i < 25;i++) {
 			dtwScore = getDTWScore(gestureData->examplars[i], testGesture);
 			if (min > dtwScore) {
 				min = dtwScore;
-				type = i;
+				type = gestureData->indexOfExamplars[i];
 			}
 		}
 		if (min > THRESHOLDOFREALGESTURETEST) {
