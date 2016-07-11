@@ -1,9 +1,10 @@
 #ifndef MODE_H
 #define MODE_H
 enum Mode {
-	RECOGNIZE,
+	RECOGNIZEKNN,
+	RECOGNIZEKC,
 	TRAINING,
-	GETDATA,
+	GETMEANDATA,
 	TEST,
 	COLLECTDATA
 };
@@ -23,7 +24,7 @@ using namespace std;
 const float HIGHPASSFACTOR = 0.3;
 const float GESTUREDISTANCE = 0.2f;
 const int NUMSTEP = 30;
-const int THRESHOLDOFREALGESTURE = 45;
+const int THRESHOLDOFREALGESTURE = 50;
 const int NUMDATAFOREACHSTEP = 5;
 const int NUMDATABETWEENSTEPS = 3;
 
@@ -40,9 +41,11 @@ public:
 		case Mode::COLLECTDATA:
 			examplarsData = new GestureDataManager(0);
 			break;
-		case Mode::RECOGNIZE:
-		case Mode::TEST:
+		case Mode::RECOGNIZEKNN:
 			examplarsData = new GestureDataManager(1);
+			break;
+		case Mode::RECOGNIZEKC:
+			examplarsData = new GestureDataManager(3);
 			break;
 		default:
 			cout << "error in recognition controller construction";
@@ -64,7 +67,6 @@ public:
 			processSegment(accelX, accelY, accelZ);
 		}
 	}
-
 
 private: 
 	Mode modeOfProcess;
@@ -152,9 +154,12 @@ private:
 
 	void processDataAtEndGesture() {
 		switch (modeOfProcess) {
-		case Mode::RECOGNIZE:
+		case Mode::RECOGNIZEKNN:
 			//TODO : print symbol of gesture from compare function
 			cout << getTypeOfGestures() << endl;
+			break;
+		case Mode::RECOGNIZEKC:
+			cout << getTypeOfGesturesWithMean() << endl;
 			break;
 		case Mode::TRAINING:
 			// TODO : get getsture and save into file
@@ -170,6 +175,7 @@ private:
 			break;
 		case Mode::COLLECTDATA:
 			// TODO: add collectData -> raw group 
+			examplarsData->addTestGestures(currentGesture,0);
 			break;
 		}
 		resetData();
@@ -221,6 +227,28 @@ private:
 			if (min > dtwScore) {
 				min = dtwScore;
 				type = examplarsData->indexOfExamplars[i];
+			}
+		}
+		cout << "Min value : " << min << endl;
+		if (min < THRESHOLDOFREALGESTURE) {
+			return type + 1;
+		}
+		else {
+			return 0;
+		}
+	}
+
+	int getTypeOfGesturesWithMean() {
+		int type = 0;
+		float min = getDTWScore(examplarsData->meanExamplar[0]);
+		float dtwScore = 0;
+		int sizeOfTraining = examplarsData->meanExamplar.size();
+
+		for (int i = 1;i < sizeOfTraining;i++) {
+			dtwScore = getDTWScore(examplarsData->meanExamplar[i]);
+			if (min > dtwScore) {
+				min = dtwScore;
+				type = i;
 			}
 		}
 		cout << "Min value : " << min << endl;

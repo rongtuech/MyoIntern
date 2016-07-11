@@ -47,8 +47,8 @@ public:
 			numOfResultType[realType][resultType]++;
 		}
 
-		for (int i = 1; i < 6; i++) {
-			for (int j = 0; j < 5; j++) {
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 6; j++) {
 				cout << numOfResultType[i][j] << " ";
 			}
 			cout << endl;
@@ -88,6 +88,8 @@ private:
 	int getDTWScore(Gesture* examplar, Gesture* testGesture) {
 		return dtwAlg->calDTW(examplar,testGesture);
 	}
+
+	
 };
 
 

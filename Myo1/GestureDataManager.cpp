@@ -6,10 +6,12 @@
 #include <string>
 #include <vector>
 #include "Gesture.cpp"
+#include "DTW.cpp"
 using namespace std;
 
 const string EXAMPLARSFILE = "examplars.txt";
 const string EXAMPLARSINDEX = "examplarsIndex.txt";
+const string MEANEXAMPLAR = "meanExampla.txt";
 const string GESTUREFILE = "gestureJab.txt";
 const string GESTUREINDEXFILE = "gestureIndex.txt";
 const int NUMOFTRAININGSEQ = 25;
@@ -23,6 +25,8 @@ public :
 	vector<int> indexOfTestGestures;
 	bool mode = 0; // 0 train, 1 load
 
+	vector <Gesture*> meanExamplar;
+
 	GestureDataManager(int type = 0) {
 		if (type == 1) {
 			mode = type;
@@ -32,6 +36,9 @@ public :
 			mode = type;
 			loadExamplars();
 			loadTestGestures();
+		} else if (type == 3) {
+			loadMeanExamplars();
+			mode = type;
 		}
 	}
 
@@ -68,9 +75,56 @@ public :
 		indexOfTestGestures.push_back(typeOfSeq);
 	}
 
+	void getMeanExamplar() {
+		vector<Gesture*> cluster[5];
+		DTW createMean;
+		for (int i = 0; i < examplars.size();i++) {
+			cluster[indexOfExamplars[i]].push_back(examplars[i]);
+		}
+		for (int i = 0; i < 5; i++) {
+			meanExamplar.push_back(createMean.calMeanOfGesutures(cluster[i]));
+		}
+		saveMeanExamplars();
+	}
+
 private:
 	int indexCurrentInsertExamplar = 0;
 	int indexCurrentInsertGestures = 0;
+
+	void loadMeanExamplars() {
+		ifstream openfile(MEANEXAMPLAR);
+		string line;
+		int index = 0;
+
+		if (openfile.is_open()) {
+			while (!openfile.eof())
+			{
+				if (index > 4)
+					cout << "error line 99 GestureDataManager" <<endl;
+				getline(openfile, line);
+				meanExamplar.push_back(fromStringToGesture(line));
+				index++; // this line still here for testing
+			}
+			openfile.close();
+		}
+		else
+		{
+			cout << "can't not open file";
+		}
+	}
+
+	void saveMeanExamplars() {
+		ofstream openfile(EXAMPLARSFILE);
+		if (openfile.is_open())
+		{
+			for (int i = 0; i < meanExamplar.size(); i++) {
+				openfile << fromGestureToString(meanExamplar[i]) + "\n";
+			}
+			openfile << fromGestureToString(meanExamplar[meanExamplar.size() - 1]);
+			openfile.close();
+		}
+		else cout << "Unable to open file";
+	}
 
 	void loadExamplars() {
 		loadExamplarsSeq();
@@ -99,7 +153,6 @@ private:
 			cout << "can't not open file";
 		}
 	}
-
 
 	void loadExamplarsIndex() {
 		ifstream openfile(EXAMPLARSINDEX);
@@ -206,19 +259,19 @@ private:
 	}
 
 	void saveTestGesturesData() {
-		ofstream openfile(GESTUREFILE, std::fstream::in | std::fstream::out | std::fstream::app);
+		ofstream openfile(GESTUREFILE, std::ofstream::app);
 		if (openfile.is_open())
 		{
 			for (int i = 0; i < testGestures.size()-1; i++)
 				openfile << fromGestureToString(testGestures[i]) + "\n";
-			openfile << fromGestureToString(testGestures[testGestures.size()]) + "\n";
+			openfile << fromGestureToString(testGestures[testGestures.size()-1]);
 			openfile.close();
 		}
 		else cout << "Unable to open file";
 	}
 
 	void saveTestGesturesIndex() {
-		ofstream openfile(GESTUREINDEXFILE, std::fstream::in | std::fstream::out | std::fstream::app);
+		ofstream openfile(GESTUREINDEXFILE, std::ofstream::app);
 		if (openfile.is_open())
 		{
 			for (int i = 0; i < indexOfTestGestures.size()-1; i++)

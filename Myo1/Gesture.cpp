@@ -27,12 +27,24 @@ public:
 		sequence_z.push_back(z);
 	}
 
+	void divideStep(int index, int denominator) {
+		sequence_x[index] /= denominator;
+		sequence_y[index] /= denominator;
+		sequence_z[index] /= denominator;
+	}
+
 	void clearAll() {
 		sequence_x.clear();
 		sequence_y.clear();
 		sequence_z.clear();
 	}
 	 
+	void addData(int x, int y, int z, int index) {
+		sequence_x[index] += x;
+		sequence_y[index] += y;
+		sequence_z[index] += z;
+	}
+
 	void print() {
 		for (int i = 0; i < sequence_x.size(); i++)
 			cout << sequence_x[i] << " " << sequence_y[i] << " " << sequence_z[i] << endl;
