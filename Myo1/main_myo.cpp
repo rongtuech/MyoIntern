@@ -175,18 +175,18 @@ public:
 	float acc[3] = {};
 	
 	RecognitionController *recognitionController;
-	Mode mode = Mode::RECOGNIZEKC;
+	Mode mode = Mode::RECOGNIZEKNN;
 };    
 
 int main(int argc, char** argv)     
 {
-	Mode mode = Mode::RECOGNIZEKNN;
+	Mode mode = Mode::RECOGNIZEKNN; 
 	// We catch any exceptions that might occur below -- see the catch statement for more details.
 	if (mode == Mode::TEST) {
 		TestControl testGesture;
 		testGesture.testAllCode();
 		cout << "done";
-	}
+	} 
 	else if (mode == Mode::GETMEANDATA) {
 		GestureDataManager dataManager;
 		dataManager.getMeanExamplar(); 
@@ -234,7 +234,7 @@ int main(int argc, char** argv)
 
 
 			// If a standard exception occurred, we print out its message and exit.
-		}
+		} 
 		catch (const std::exception& e) {
 			std::cerr << "Error: " << e.what() << std::endl;
 			std::cerr << "Press enter to continue.";

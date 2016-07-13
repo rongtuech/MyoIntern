@@ -7,68 +7,24 @@ c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(62): warn
 c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(109): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(32): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(36): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(41): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(81): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(120): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(188): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(202): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(265): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(277): warning C4018: '<': signed/unsigned mismatch
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(33): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(37): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(42): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(82): warning C4018: '<': signed/unsigned mismatch
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(121): warning C4018: '<': signed/unsigned mismatch
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(189): warning C4018: '<': signed/unsigned mismatch
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(203): warning C4018: '<': signed/unsigned mismatch
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(266): warning C4018: '<': signed/unsigned mismatch
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(278): warning C4018: '<': signed/unsigned mismatch
 c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(24): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(105): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(106): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(107): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(108): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\testcontrol.cpp(89): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 f:\example\myo\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
   f:\example\myo\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
 f:\example\myo\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
   f:\example\myo\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
-  RecognitionController.cpp
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesture.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesture.cpp(49): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(54): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(109): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(32): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(36): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(41): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(81): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(120): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(188): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(202): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(265): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(277): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(24): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(105): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(106): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\recognitioncontroller.cpp(107): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  GestureDataManager.cpp
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesture.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesture.cpp(49): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(54): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\dtw.cpp(109): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(32): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(36): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(41): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(81): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(120): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(188): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(202): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(265): warning C4018: '<': signed/unsigned mismatch
-c:\users\trung\documents\visual studio 2015\projects\myo1\myo1\gesturedatamanager.cpp(277): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  TestControl.cpp
-  DTW.cpp
-  Myo1.vcxproj -> C:\Users\Trung\documents\visual studio 2015\Projects\Myo1\Debug\Myo1.exe
-  Myo1.vcxproj -> C:\Users\Trung\documents\visual studio 2015\Projects\Myo1\Debug\Myo1.pdb (Partial PDB)
+  Myo1.vcxproj -> C:\Users\Trung\Documents\Visual Studio 2015\Projects\Myo1\Debug\Myo1.exe
+  Myo1.vcxproj -> C:\Users\Trung\Documents\Visual Studio 2015\Projects\Myo1\Debug\Myo1.pdb (Partial PDB)
           1 file(s) copied.

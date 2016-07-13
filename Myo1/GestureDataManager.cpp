@@ -28,6 +28,7 @@ public :
 	vector <Gesture*> meanExamplar;
 
 	GestureDataManager(int type = 0) {
+		cout << "type : " << type << endl;
 		if (type == 1) {
 			mode = type;
 			loadExamplars();
@@ -150,7 +151,7 @@ private:
 		}
 		else
 		{
-			cout << "can't not open file";
+			cout << "can't not open file load examplars sequence ";
 		}
 	}
 
@@ -170,7 +171,7 @@ private:
 		}
 		else
 		{
-			cout << "can't not open file";
+			cout << "can't not open file load examplars index";
 		}
 	}
 

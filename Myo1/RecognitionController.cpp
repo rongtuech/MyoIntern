@@ -24,7 +24,7 @@ using namespace std;
 const float HIGHPASSFACTOR = 0.3;
 const float GESTUREDISTANCE = 0.2f;
 const int NUMSTEP = 30;
-const int THRESHOLDOFREALGESTURE = 50;
+const int THRESHOLDOFREALGESTURE = 100;
 const int NUMDATAFOREACHSTEP = 5;
 const int NUMDATABETWEENSTEPS = 3;
 
@@ -36,6 +36,7 @@ public:
 	}
 
 	RecognitionController(Mode mode) {
+		cout << "mode : " << mode << endl;
 		switch (mode) {
 		case Mode::TRAINING:
 		case Mode::COLLECTDATA:
