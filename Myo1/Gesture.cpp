@@ -52,7 +52,7 @@ public:
 	}
 
 	bool isIgnore() {
-		if (sequence_x.size() <= 2)
+		if (sequence_x.size() <= 5)
 			return true;
 		return false;
 	}

@@ -22,12 +22,12 @@ enum Mode {
 using namespace std;
 
 const float HIGHPASSFACTOR = 0.3;
-const float GESTUREDISTANCE = 0.2f;
-const int NUMSTEP = 30;
+const float GESTUREDISTANCE = 0.17f; 
+const int NUMSTEP =5;
 const int THRESHOLDOFREALGESTURE = 100;
 const int NUMDATAFOREACHSTEP = 5;
 const int NUMDATABETWEENSTEPS = 3;
-
+const float GAPFORHIGHVALUEACC = 0.15f;
 class RecognitionController {
 public:	
 	RecognitionController() {
@@ -63,7 +63,7 @@ public:
 	}
 
 	void processInitAccl(float accelX, float accelY, float accelZ) { 
-		filterHighPassFactor(accelX, accelY, accelZ);
+		//filterHighPassFactor(accelX, accelY, accelZ); don't use it may be it affect on signal
 		if (isInSegment(accelX, accelY, accelZ)) {
 			processSegment(accelX, accelY, accelZ);
 		}
@@ -73,7 +73,7 @@ private:
 	Mode modeOfProcess;
 	GestureDataManager *examplarsData;
 	float previousAccel[3] = {};
-	int numStepFromStartGesture = 0;
+	int numStepNonGapGesture = NUMSTEP+1;
 	float sumAccInEachStep[3] = {};
 	float dataInEachStep[5][3] = {};
 	int indexForDataEachStep = 0;
@@ -83,6 +83,10 @@ private:
 	bool startIgnore = true;
 	Gesture currentGesture;
 	DTW *dtwAlg;
+	bool isCalibrated = false;
+	float accAtCalibration = 0;
+	float currAcc = 0;
+	bool doneReset = true;
 
 	int quantizeAccelerometerValue(float value) {
 		if (value > 2)
@@ -110,50 +114,71 @@ private:
 		accelX = accelX - lastX;
 		accelY = accelY - lastY;
 		accelZ = accelZ - lastZ;
+		
 	}
 
 	float calcGapCurrentAndPreviousAccl(float accelX, float accelY, float accelZ) {
 		float result = sqrtf(powf(accelX - previousAccel[0], 2) + powf(accelY - previousAccel[1], 2) + powf(accelZ - previousAccel[2], 2));
-
+		currAcc = sqrtf(powf(accelX , 2) + powf(accelY , 2) + powf(accelZ , 2));
 		previousAccel[0] = accelX;
 		previousAccel[1] = accelY;
 		previousAccel[2] = accelZ;
-
+		if (!isCalibrated) {
+			accAtCalibration = result;
+			isCalibrated = true;
+			cout << "Is calibrated" << endl;
+		}
 		return result;
 	}
 
 	bool isStartGesture(float accelX, float accelY, float accelZ) {
 		if (calcGapCurrentAndPreviousAccl(accelX, accelY, accelZ) >= GESTUREDISTANCE) {
-			return true;
+				return true;
+		}
+		else {
+			
+			return false;
+		}
+	}
+
+	bool isEndGesture() {
+		if (numStepNonGapGesture > NUMSTEP) {
+			float gap = abs(accAtCalibration - currAcc);
+			if (isFinishSegment &&  gap > GAPFORHIGHVALUEACC) {
+				cout << gap << endl;
+				return false;
+			}
+			else
+				return true;
 		}
 		else {
 			return false;
 		}
 	}
 
-	bool isEndGesture() {
-		return numStepFromStartGesture > NUMSTEP;
-	}
-
 	void resetData() {
+		doneReset = false;
+		numStepNonGapGesture = NUMSTEP + 1;
 		indexForDataEachStep = 0;
 		isDataEachStepFull = false;
 		countToStep = 0;
-		isFinishSegment = false;
 		currentGesture.clearAll();
 		for (int i = 0; i < 3;i++)
 			sumAccInEachStep[i] = 0;
 		for (int i = 0; i < 5;i++)
 			for (int j = 0;j<3;j++)
 				dataInEachStep[i][j] = 0;
+		isFinishSegment = false;
+		doneReset = true;
 	}
 
 	void initDataAtStartGesture() {
 		isFinishSegment = true;
-		numStepFromStartGesture = 0;
+		numStepNonGapGesture = 0;
 	}
 
 	void processDataAtEndGesture() {
+		cout << "already process" << endl;
 		switch (modeOfProcess) {
 		case Mode::RECOGNIZEKNN:
 			//TODO : print symbol of gesture from compare function
@@ -170,7 +195,11 @@ private:
 				else
 					startIgnore = false;
 			}
-			break;
+			else {
+				cout << "ignore" << endl;
+			}
+
+			break				;
 		case Mode::TEST:
 			// TODO :: No collect data just pumd data to auto test and print result.
 			break;
@@ -185,19 +214,24 @@ private:
 	bool isInSegment(float accelX, float accelY, float accelZ) {
 		if (isStartGesture(accelX, accelY, accelZ)) {
 			initDataAtStartGesture();
+			return true;
 		}
-		if (isEndGesture()) {
-			if (isFinishSegment) {
-				processDataAtEndGesture();
+		else {
+			if (isEndGesture()) {
+				if (isFinishSegment) {
+					processDataAtEndGesture();
+				}
+				return false;
 			}
-			return false;
+			else {
+				numStepNonGapGesture++;
+				return true;
+			}
 		}
-		numStepFromStartGesture++;
-
-		return true;
 	}
 
 	void processSegment(float accelX, float accelY, float accelZ) {
+		cout << "working" << endl;
 		sumAccInEachStep[0] += accelX - dataInEachStep[indexForDataEachStep][0];
 		sumAccInEachStep[1] += accelY - dataInEachStep[indexForDataEachStep][1];
 		sumAccInEachStep[2] += accelZ - dataInEachStep[indexForDataEachStep][2];

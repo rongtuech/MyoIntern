@@ -2,15 +2,15 @@
 // Distributed under the Myo SDK license agreement. See LICENSE.txt for details.
 #define _USE_MATH_DEFINES
 #include <cmath>
-#include <iostream> 
-#include <iomanip>
+#include <iostream>     
+#include <iomanip> 
 #include <stdexcept>
 #include <string>
 #include <algorithm> 
 #include "RecognitionController.cpp" 
 #include "Gesture.cpp"
-#include "TestControl.cpp"
-   
+#include "TestControl.cpp"   
+     
 // The only file that needs to be included to use the Myo C++ SDK is myo.hpp.
 #include <myo/myo.hpp> 
  
@@ -24,14 +24,14 @@ public:
 	{
 		recognitionController = new RecognitionController(mode);
 	} 
-	
+	 
 	~DataCollector() {
 		delete recognitionController;
-	} 
+	}    
 
 	// onUnpair() is called whenever the Myo is disconnected from Myo Connect by the user.
 	void onUnpair(myo::Myo* myo, uint64_t timestamp)
-	{
+	{ 
 		// We've lost a Myo.
 		// Let's clean up some leftover state.
 		roll_w = 0;
@@ -42,7 +42,7 @@ public:
 	}
    
 	void onAccelerometerData(myo::Myo * myo, uint64_t timestamp, const myo::Vector3< float > & 	accel)
-	{
+	{    
 		acc[0] = accel.x();
 		acc[1] = accel.y();
 		acc[2] = accel.z();
@@ -56,9 +56,9 @@ public:
 		using std::atan2;
 		using std::asin;
 		using std::sqrt;
-		using std::max;
+		using std::max; 
 		using std::min;
-
+		    
 		// Calculate Euler angles (roll, pitch, and yaw) from the unit quaternion.
 		float roll = atan2(2.0f * (quat.w() * quat.x() + quat.y() * quat.z()),
 			1.0f - 2.0f * (quat.x() * quat.x() + quat.y() * quat.y()));
@@ -92,13 +92,13 @@ public:
 		//	// are being performed, but lock after inactivity.
 		//	myo->unlock(myo::Myo::unlockTimed);
 		//}
-	}
+	}       
 
 	// onArmSync() is called whenever Myo has recognized a Sync Gesture after someone has put it on their
 	// arm. This lets Myo know which arm it's on and which way it's facing.
 	void onArmSync(myo::Myo* myo, uint64_t timestamp, myo::Arm arm, myo::XDirection xDirection, float rotation,
-		myo::WarmupState warmupState)
-	{
+		myo::WarmupState warmupState) 
+	{ 
 		onArm = true;
 		whichArm = arm;
 	}
@@ -136,7 +136,7 @@ public:
 		/*std::cout << '[' << std::string(roll_w, '*') << std::string(18 - roll_w, ' ') << ']'
 			<< '[' << std::string(pitch_w, '*') << std::string(18 - pitch_w, ' ') << ']'
 			<< '[' << std::string(yaw_w, '*') << std::string(18 - yaw_w, ' ') << ']';
-		 */ 
+		 */  
 		if (onArm) {
 			// Print out the lock state, the currently recognized pose, and which arm Myo is being worn on.
 
@@ -154,7 +154,7 @@ public:
 		} 
 		else {
 			// Print out a placeholder for the arm and pose when Myo doesn't currently know which arm it's on.
-			std::cout << '[' << std::string(8, ' ') << ']' << "[?]" << '[' << std::string(14, ' ') << ']';
+			//std::cout << '[' << std::string(8, ' ') << ']' << "[?]" << '[' << std::string(14, ' ') << ']';
 		}
 
 		std::cout << std::flush;  
@@ -174,13 +174,13 @@ public:
 	// These values are set by onAccelerationData() above.
 	float acc[3] = {};
 	
-	RecognitionController *recognitionController;
-	Mode mode = Mode::RECOGNIZEKNN;
-};    
+	RecognitionController * recognitionController;
+	Mode mode = Mode::TRAINING;
+};     
 
 int main(int argc, char** argv)     
-{
-	Mode mode = Mode::RECOGNIZEKNN; 
+{ 
+	Mode mode = Mode::TRAINING; 
 	// We catch any exceptions that might occur below -- see the catch statement for more details.
 	if (mode == Mode::TEST) {
 		TestControl testGesture;
@@ -188,7 +188,7 @@ int main(int argc, char** argv)
 		cout << "done";
 	} 
 	else if (mode == Mode::GETMEANDATA) {
-		GestureDataManager dataManager;
+		GestureDataManager dataManager;  
 		dataManager.getMeanExamplar(); 
 		cout << "done";
 	} else {
@@ -204,13 +204,13 @@ int main(int argc, char** argv)
 			// immediately.
 			// waitForMyo() takes a timeout value in milliseconds. In this case we will try to find a Myo for 10 seconds, and
 			// if that fails, the function will return a null pointer.
-
+			     
 			myo::Myo* myo = hub.waitForMyo(10000);
-
+			  
 			// If waitForMyo() returned a null pointer, we failed to find a Myo, so exit with an error message.
 			if (!myo) {
 				throw std::runtime_error("Unable to find a Myo!");
-			}
+			}      
 
 			// We've found a Myo.
 			std::cout << "Connected to a Myo armband!" << std::endl << std::endl;
