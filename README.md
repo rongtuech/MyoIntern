@@ -1,4 +1,4 @@
-PUCHES RECOGNIZER WITH MYO ARM BAND (using accelerometer data + DTW + K nearest neightbour + acc magnitude gap)
+PUCHES RECOGNIZER WITH MYO ARM BAND (using accelerometer data + DTW + K nearest neightbours + acc magnitude gap)
 
 =================================================================
 + Small code to recognize puches when wearing a Myo armband.
